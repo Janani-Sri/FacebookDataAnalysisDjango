@@ -1,0 +1,52 @@
+{% extends 'theme/landing_page/base.html' %}
+{% load static %}
+{% block content %}
+
+<div style="position: fixed; width: 100%" class="about page" id="ABOUT">
+        <div  class="container">
+            <div style="padding-top: 50px" class="row">
+                <div class="col-xs-9 ">
+                    <!-- ABOUT US SECTION TITLE-->
+                    <div class="section_title">
+                        <h2>DATA DIVAS</h2>
+                        <p>Data Beats Emotions.<BR>What We Have Is The Data Glut.</p>
+                            {% if user.is_authenticated %}
+                                <p>Hello, {{ user.username }}.....Take your social media performance above and beyond the ordinary</p>
+                            {% else %}
+                                <h3 >Login to Data Divas to analyze your Facebook Profile</h3>
+                            {% endif %}
+                    </div>
+{#                    <div>#}
+                    <div style="padding-left: 400px;padding-top: 10px;" class="col-xs-2 center-block">
+                        {% if request.user.is_authenticated %}
+                           <a><form method="post" action="{% url 'account_logout' %}" >
+                              <button class="btn home-btn wow fadeInLeft" >LOGOUT{% csrf_token %}
+                                  {% if redirect_field_value %}
+                                  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                                  {% endif %}</button>
+                           </form></a>
+                        {% else %}
+                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        {% endif %}
+                    </div>
+
+                </div>
+            <div class="col-xs-1" style="padding-bottom: 500px;padding-right: 200px;padding-top: 50px">
+                {% if request.user.is_authenticated and request.user.email %}
+                            <div style="padding-top: 80px" class="col-md-3 text-center">
+                                <img  style="height: 250px;width: 250px;border-radius: 50%;opacity: 0.5" src="http://graph.facebook.com/{{uid}}/picture?width=300&height=300" alt="">
+{#                            <img  src="http://graph.facebook.com/2496044853944388/picture" alt="">#}
+                            </div>
+                        {% else %}
+                            <div style="padding-top: 30px" class="col-md-3 text-center">
+                                <img  style="height: 250px;width: 250px;border-radius: 50%;background-color: #dff0d8 " src="{% static 'theme/landing_page/images/user.png' %}" alt="">
+                            </div>
+                        {% endif %}
+            </div>
+
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}

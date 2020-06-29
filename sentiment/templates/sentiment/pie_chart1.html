@@ -1,0 +1,39 @@
+{% extends 'theme/landing_page/base.html' %}
+
+{% block content %}
+
+  <div id="container" style="width: 75%;">
+{#    <canvas id="pie-chart"></canvas>#}
+    <img style="background-color: #2b2b2b" src="data:image/png;base64,{{ data|safe }}" alt="" >
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#4CAF50', '#FA4443', '#2983FF', '#C0C0C0', '#D3D3D3'
+          ],
+          label: 'Sentiment'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true,
+          maintainAspectRatio: true,
+
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
+
+{% endblock %}

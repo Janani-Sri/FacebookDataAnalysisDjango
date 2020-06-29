@@ -1,0 +1,41 @@
+{% extends 'theme/landing_page/base.html' %}
+{% block content %}
+
+    <div style="position: fixed; width: 100%" class="about page" id="ABOUT">
+        <div class="container">
+            <div style="padding-top: 140px" class="row">
+
+                <h3 class="text-center"><B>SENTIMENT ANALYSIS OF YOUR PAGE {{ page_name }}</B></h3>
+                <div style="padding-top: 50px;padding-right: 200px" class="col-xs-2">
+                    <img style="height: 400px;width: 500px;border-radius: 50%;background-color: #dff0d8 " src="data:image/png;base64,{{ data|safe }}" alt="" >
+                </div>
+
+{#                <div style="padding-top: 250px;padding-right: 200px;padding-left: 600px" class="col-xs-2">#}
+{#                    <img style="height: 400px;width: 400px;border-radius: 50%;background-color: #dff0d8 " src="data:image/png;base64,{{ cloud|safe }}" alt="" >#}
+{#                </div>#}
+
+                    <h3 style="padding-left: 800px;padding-top: 70px">HOW DOES IT WORK ?</h3><br>
+                <p style="text-align:justify;padding-left: 800px;line-break: inherit">We'll collect all the comments of your facebook page,<Br><br> analyze them and categorize them as:<br><br>
+                        ✔️ Positive<br><br>
+                        ❌ Negative<br><br>
+                        💬 Neutral</p>
+
+
+            </div>
+            <section style="padding-bottom:500px;padding-left: 110px" class="text-center rw-wrapper">
+
+
+
+
+            </section>
+        </div>
+
+
+
+    </div>
+
+
+{% endblock %}
+
+
+

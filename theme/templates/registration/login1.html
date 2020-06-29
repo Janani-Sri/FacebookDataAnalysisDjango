@@ -1,0 +1,105 @@
+{% extends 'theme/landing_page/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign In Data Divas</title>
+    <!-- Favicon-->
+    <link rel="icon" href="{% static 'theme/admin/images/favicon.ico' %}" type="image/x-icon">
+
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="{% static 'theme/admin/plugins/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="{% static 'theme/admin/plugins/node-waves/waves.css' %}" rel="stylesheet"/>
+
+    <!-- Animation Css -->
+    <link href="{% static 'theme/admin/plugins/animate-css/animate.css' %}" rel="stylesheet"/>
+
+    <!-- Custom Css -->
+    <link href="{% static 'theme/admin/css/style.css' %}" rel="stylesheet">
+</head>
+
+<body class="login-page" STYLE="background-color: #222222">
+
+<div class="login-box">
+    <div class="logo">
+        <a href="javascript:void(0);"><b>Data</b>Divas</a>
+
+    </div>
+    <div class="card">
+        <div class="body">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endif %}
+            <form id="sign_in" method="POST">
+                {% csrf_token %}
+                <div class="msg">Sign in to start your session</div>
+
+
+                <div class="row">
+                    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+                        <button class="btn btn-danger  mb-2">
+                            <a href="#">Login with Instagram</a>
+                        </button>
+                        <button class="btn btn-primary mb-2">
+                            <a href="#">Login with Facebook
+                            </a>
+                        </button>
+                        <button class="btn btn-info mb-2">
+                            <a href="#">Login with LinkedIn</a>
+                        </button>
+                    </div>
+                </div>
+                <div class="row m-t-15 m-b--20">
+{#                    <div class="col-xs-6">#}
+{#                        <a href="{% url 'registration' %}">Register Now!</a>#}
+{#                    </div>#}
+                    <div class="col-xs-6 align-right">
+                        <a href="forgot-password.html">Forgot Password?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Jquery Core Js -->
+<script src="{% static 'theme/admin/plugins/jquery/jquery.min.js' %}"></script>
+
+<!-- Bootstrap Core Js -->
+<script src="{% static 'theme/admin/plugins/bootstrap/js/bootstrap.js' %}"></script>
+
+<!-- Waves Effect Plugin Js -->
+<script src="{% static 'theme/admin/plugins/node-waves/waves.js' %}"></script>
+
+<!-- Validation Plugin Js -->
+<script src="{% static 'theme/admin/plugins/jquery-validation/jquery.validate.js' %}"></script>
+
+<!-- Custom Js -->
+<script src="{% static 'theme/admin/js/admin.js' %}"></script>
+<script src="{% static 'theme/admin/js/pages/examples/sign-in.js' %}"></script>
+</body>
+
+</html>

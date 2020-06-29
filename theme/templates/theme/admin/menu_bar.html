@@ -1,0 +1,21 @@
+<div class="menu">
+    <ul class="list">
+        <li class="header">MAIN NAVIGATION</li>
+        {% for menu in menus %}
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons col-red">donut_large</i>
+                    {#                    <i class="material-icons">{{ menu.icon }}</i>#}
+                    <span>{{ menu.name }}</span>
+                </a>
+                <ul class="ml-menu">
+                    {% for child in menu.childs %}
+                        <li>
+                            <a href="{{ child.url }}">{{ child.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
